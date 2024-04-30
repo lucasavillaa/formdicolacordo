@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html
+  data-bs-theme="light"
+  lang="en"
+  data-bss-forced-theme="light"
+  style="
+    overflow: visible;
+    position: sticky;
+    min-width: 0px;
+    height: 1246.344px;
+  "
+>
+  <head>
+    <meta name="theme-color" content="#06215a" />
+    <link rel="shortcut icon" type="image/png" href="./dicol.png" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Formulário de Acordo Comercial - Dicol</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap"
+    />
+    <link rel="stylesheet" href="assets/css/styles.min.css" />
+    <!-- Adicionando o SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      // Função para enviar o formulário
+      function enviarFormulario() {
+        // Verifica se os campos obrigatórios estão preenchidos
+        var nomeFornecedor = document.getElementById("nome_fornecedor").value;
+        var nomeResponsavel = document.getElementById("nome_responsavel").value;
+        var cliente = document.getElementById("cliente").value;
+        var assunto = document.getElementById("assunto").value;
+        var textMessage = document.getElementById("text_message").value;
+        var data = document.getElementById("data").value;
+        var emailFornecedor = document.getElementById("email_fornecedor").value;
+        var valor = document.getElementById("valor").value;
+
+        if (
+          nomeFornecedor === "" ||
+          nomeResponsavel === "" ||
+          cliente === "" ||
+          assunto === "" ||
+          textMessage === "" ||
+          data === "" ||
+          emailFornecedor === "" ||
+          valor === ""
+        ) {
+          // Exibe uma mensagem de erro se algum campo estiver vazio
+          Swal.fire({
+            title: "Erro",
+            text: "Por favor, preencha todos os campos obrigatórios.",
+            icon: "error",
+            confirmButtonColor: "#06246D",
+            confirmButtonText: "Ok",
+          });
+        } else {
+          // Exibe uma mensagem de sucesso se todos os campos estiverem preenchidos
+          Swal.fire({
+            title: "Enviado!",
+            text: "O formulário foi enviado com sucesso!",
+            icon: "success",
+            showConfirmButton: false,
+          });
+        }
+      }
+    </script>
+  </head>
+
+  <body
+    onload="gerarNumeroAleatorio()"
+    style="background: url('assets/img/background.png') left / cover"
+  >
+    <section class="py-5" style="height: 714.344px; position: static">
+      <picture class="d-flex justify-content-center align-items-center"
+        ><img
+          class="d-flex align-items-center"
+          src="assets/img/Logo%20all%20Branco.png"
+          style="width: 148px"
+      /></picture>
+      <h3
+        class="fw-bold text-center text-sm-center text-md-center text-lg-center text-xl-center text-xxl-center d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center"
+        style="
+          font-size: 35px;
+          padding: 0px;
+          padding-top: 55px;
+          font-weight: bold;
+          line-height: 34.328px;
+          height: 70px;
+          position: relative;
+        "
+      >
+        Formulário de Acordo Comercial
+      </h3>
+      <div class="row">
+        <div
+          class="col d-flex d-lg-flex d-xl-flex justify-content-sm-center align-items-lg-center justify-content-xxl-center align-items-xxl-center"
+          style="height: 1036.719px"
+        >
+          <form
+            class="m-auto bounce animated"
+            action="envio.php"
+            method="post"
+            enctype="multipart/form-data"
+            style="width: 310px"
+            onsubmit="return validarFormulario()"
+          >
+            <select
+              class="form-control d-inline"
+              id="nome_fornecedor"
+              name="nome_fornecedor"
+              style="
+                background: #06215a;
+                color: #ffffff;
+                border-color: var(--bs-secondary-bg);
+              "
+              required=""
+              onchange="preencherEmailFornecedor()"
+            >
+              <option value="">Selecione um fornecedor</option>
+              <option value="Dr.Oetker">Dr. Oetker</option>
+              <option value="Ypê">Ypê</option>
+              <option value="Kraft">Kraft</option>
+              <option value="Bauducco">Bauducco</option>
+              <option value="Santher">Santher</option>
+              <option value="Hemmer">Hemmer</option>
+              <option value="Hershey's">Hershey's</option>
+              <option value="Dadinho">Dadinho</option>
+              <option value="Melitta">Melitta</option>
+              <option value="Zanlorenzi">Zanlorenzi</option>
+              <option value="Mardam">Mardam</option>
+              <option value="Hero">Hero</option>
+              <option value="Docile">Docile</option>
+              <option value="Santa Maria">Santa Maria</option>
+              <option value="Ricardo - Dicol">Ricardo - Dicol</option>
+              <option value="Rodrigo - Dicol">Rodrigo - Dicol</option>
+            </select>
+
+            <div class="mb-3"></div>
+            <select
+              class="form-control"
+              id="nome_responsavel"
+              name="nome_responsavel"
+              style="
+                background: #06215a;
+                color: #ffffff;
+                border-color: var(--bs-secondary-bg);
+              "
+              required=""
+            >
+              <option value="">Selecione um responsável</option>
+              <option value="Alex">Alex</option>
+              <option value="Ricardo">Ricardo</option>
+              <option value="Rodrigo">Rodrigo</option>
+            </select>
+
+            <div class="mb-3"></div>
+            <input
+              class="form-control"
+              type="text"
+              id="cliente"
+              name="cliente"
+              placeholder="Cliente"
+              style="
+                background: rgba(255, 255, 255, 0);
+                border-color: var(--bs-secondary-bg);
+                color: rgb(255, 255, 255);
+              "
+              required=""
+            />
+            <div class="mb-3"></div>
+            <input
+              class="form-control"
+              type="text"
+              id="assunto"
+              name="assunto"
+              placeholder="Assunto"
+              style="
+                background: rgba(255, 255, 255, 0);
+                border-color: var(--bs-secondary-bg);
+                margin-bottom: 0;
+                color: rgb(255, 255, 255);
+              "
+              required=""
+            />
+            <div class="mb-3"></div>
+            <input
+              class="form-control"
+              type="text"
+              name="valor"
+              id="valor"
+              style="
+                background: rgba(255, 255, 255, 0);
+                color: rgb(255, 255, 255);
+              "
+              placeholder="R$"
+              oninput="formatCurrency(this)"
+              required=""
+            />
+
+            <script>
+              function formatCurrency(input) {
+                // Remove todos os caracteres não numéricos, exceto pontos e vírgulas
+                let unformattedValue = input.value.replace(/[^0-9,.]/g, "");
+
+                // Adiciona "R$" na frente do valor e formata com cinco casas decimais
+                let formattedValue = `R$ ${unformattedValue}`;
+
+                // Atualiza o valor no campo de entrada
+                input.value = formattedValue;
+              }
+            </script>
+
+            <div class="mb-3"></div>
+            <input
+              class="form-control"
+              type="text"
+              id="pedido_ref"
+              name="pedido_ref"
+              placeholder="Pedido Ref"
+              style="
+                background: rgba(255, 255, 255, 0);
+                border-color: var(--bs-secondary-bg);
+                margin-bottom: 0;
+                color: rgb(255, 255, 255);
+              "
+            />
+            <div class="mb-3"></div>
+            <label class="form-label">Data:</label
+            ><input
+              class="form-control form-control"
+              id="data"
+              type="date"
+              name="data"
+              style="
+                background: rgba(255, 255, 255, 0);
+                color: var(--bs-body-color);
+              "
+              required=""
+            />
+            <div class="mb-3"></div>
+            <textarea
+              class="form-control form-control"
+              id="text_message"
+              name="text_message"
+              rows="6"
+              placeholder="Mensagem"
+              style="
+                background: rgba(255, 255, 255, 0);
+                color: rgb(255, 255, 255);
+              "
+              required=""
+            ></textarea
+            ><label class="form-label form-label" for="name-6"></label
+            ><input
+              class="form-control"
+              type="text"
+              id="protocolo"
+              name="protocolo"
+              style="
+                background: rgba(255, 255, 255, 0);
+                border-color: var(--bs-secondary-bg);
+                margin-bottom: 0;
+                color: rgb(255, 255, 255);
+              "
+              readonly
+            />
+
+            <div class="mb-3"></div>
+            <label class="form-label">E-mail Fornecedor:</label>
+            <input
+              class="form-control"
+              type="email"
+              id="email_fornecedor"
+              name="email_fornecedor"
+              style="
+                background: rgba(255, 255, 255, 0);
+                margin-bottom: 0;
+                color: rgb(255, 255, 255);
+              "
+              required=""
+              readonly
+            />
+
+            <script>
+              function preencherEmailFornecedor() {
+                var fornecedorSelect =
+                  document.getElementById("nome_fornecedor");
+                var emailInput = document.getElementById("email_fornecedor");
+
+                var fornecedor = fornecedorSelect.value;
+
+                switch (fornecedor) {
+                  case "Dr.Oetker":
+                    emailInput.value = "Antonio.Almiron@oetker.com";
+                    break;
+                  case "Ypê":
+                    emailInput.value = "mirela.silva@ype.ind.br";
+                    break;
+                  case "Kraft":
+                    emailInput.value = "Alfredo.Leite@kraftheinz.com";
+                    break;
+                  case "Bauducco":
+                    emailInput.value = "adeliat@bauducco.com.br";
+                    break;
+                  case "Santher":
+                    emailInput.value = "valdo.oliveira@santher.com.br";
+                    break;
+                  case "Hemmer":
+                    emailInput.value = "Alfredo.Leite@kraftheinz.com";
+                    break;
+                  case "Hershey's":
+                    emailInput.value = "CSCazzoli@hersheys.com";
+                    break;
+                    case "Dadinho":
+                    emailInput.value = "ivan.silva@dadinhooriginal.com.br";
+                    break;
+                  case "Melitta":
+                    emailInput.value = "anderson.pradela@melitta.com.br";
+                    break;
+                  case "Zanlorenzi":
+                    emailInput.value = "flavio.meira@zanlorenzi.com.br";
+                    break;
+                  case "Mardam":
+                    emailInput.value = "rafael@drylocktechnologies.com";
+                    break;
+                  case "Hero":
+                    emailInput.value = "juarez.moura@hero.com.br";
+                    break;
+                  case "Docile":
+                    emailInput.value = "raul.serra@docile.com.br";
+                    break;
+                  case "Santa Maria":
+                    emailInput.value = "jose.domingos@stamaria.ind.br";
+                    break;
+                  case "Ricardo - Dicol":
+                    emailInput.value =
+                      "ricardo.cirilo@dicoldistribuidora.com.br";
+                    break;
+                    case "Rodrigo - Dicol":
+                    emailInput.value =
+                      "rodrigo@dicoldistribuidora.com.br";
+                    break;
+                  default:
+                    emailInput.value = "";
+                    break;
+                }
+              }
+            </script>
+
+            <div class="mb-3"></div>
+            <div
+              class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
+            >
+              <button
+                class="btn btn-primary text-center shadow d-block d-lg-flex justify-content-lg-center align-items-lg-center w-100"
+                data-bss-hover-animate="jello"
+                type="submit"
+                name="Enviar"
+                style="
+                  background: #06215a;
+                  max-width: 157px;
+                  border-width: 1px;
+                  border-color: var(--bs-btn-disabled-color);
+                  font-size: 20px;
+                "
+                onclick="enviarFormulario()"
+              >
+                Enviar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/script.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
+  </body>
+</html>
